@@ -20,9 +20,6 @@ function getHumanChoice() {
   }
 }
 
-let computerSelection = getComputerChoice();
-let humanSelection = getComputerChoice();
-
 function playRound(computerSelection, humanSelection) {
   if (humanSelection === computerSelection) {
     return "Draw! 🤝";
@@ -36,3 +33,10 @@ function playRound(computerSelection, humanSelection) {
     return "Computer wins! ❌";
   }
 }
+
+let computerSelection = getComputerChoice();
+let humanSelection = getHumanChoice();
+
+console.log(`Computer chose: ${computerSelection}`);
+console.log(`You chose: ${humanSelection}`);
+console.log(playRound(computerSelection, humanSelection));
