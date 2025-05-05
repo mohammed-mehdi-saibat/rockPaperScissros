@@ -11,8 +11,8 @@ A basic Rock-Paper-Scissors game where you play against the computer, built usin
 
 ## 🛠️ Technologies Used
 
-- **HTML** – for basic page structure  
-- **CSS** – for minimal styling  
+- **HTML** – for basic page structure
+- **CSS** – for minimal styling
 - **JavaScript** – for game logic and interaction
 
 ## ▶️ How to Play
@@ -25,3 +25,6 @@ A basic Rock-Paper-Scissors game where you play against the computer, built usin
 
 ## 📂 Project Structure
 
+## 🌐 Live Demo
+
+You can play the game here: [Rock Paper Scissors Game](https://mohammed-mehdi-saibat.github.io/rockPaperScissros/)
