@@ -40,3 +40,5 @@ let humanSelection = getHumanChoice();
 console.log(`Computer chose: ${computerSelection}`);
 console.log(`You chose: ${humanSelection}`);
 console.log(playRound(computerSelection, humanSelection));
+
+// The game is done
