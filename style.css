@@ -5,4 +5,18 @@
 }
 body {
   font-family: "Press Start 2P", system-ui;
+  background-color: #1d1127;
+}
+
+h1 {
+  color: #bdd909;
+  margin: 20px 0 0 20px;
+}
+
+p {
+  margin-top: 16%;
+  margin-left: 40%;
+  color: #bdd909;
+  border-bottom: 2px solid #bdd909;
+  width: fit-content;
 }
