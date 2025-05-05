@@ -19,3 +19,20 @@ function getHumanChoice() {
     return getHumanChoice();
   }
 }
+
+let computerSelection = getComputerChoice();
+let humanSelection = getComputerChoice();
+
+function playRound(computerSelection, humanSelection) {
+  if (humanSelection === computerSelection) {
+    return "Draw! 🤝";
+  } else if (
+    (humanSelection === "rock" && computerSelection === "scissors") ||
+    (humanSelection === "paper" && computerSelection === "rock") ||
+    (humanSelection === "scissors" && computerSelection === "paper")
+  ) {
+    return "You win! ✅";
+  } else {
+    return "Computer wins! ❌";
+  }
+}
