@@ -19,9 +19,8 @@ A basic Rock-Paper-Scissors game where you play against the computer, built usin
 
 1. Clone or download this repository.
 2. Open `index.html` in your browser.
-3. Open the browser **Developer Console** (`F12` or `Ctrl+Shift+I`).
-4. Type `playRound('rock')`, `playRound('paper')`, or `playRound('scissors')` to start playing.
-5. Check the console for the game outcome and running score.
+3. Pick your choice by clicking on one of the choices buttons to start the game.
+4. After the game is done, reload to play again.
 
 ## 📂 Project Structure
 
