@@ -1,0 +1,53 @@
+// function computer() {
+//     let validChoices = ["rock", "paper", "scissors"];
+//     let computerChoice = validChoices[Math.floor(Math.random() * 3)];
+//     return computerChoice;
+// }
+
+// function human() {
+//     let validChoices = ["rock", "paper", "scissors"];
+//     let humanChoice = prompt("rock, paper, or scissors?").toLowerCase();
+//     if(validChoices.includes(humanChoice)) {
+//         return humanChoice;
+//     } else {
+//         console.log("Please enter a valid choice. rock paper or scissors?");
+//         return human();
+//     }
+// }
+
+// function playRound() {
+//     let roundsCount = 0;
+//     let computerScore = 0;
+//     let humanScore = 0;
+
+//     while (roundsCount < 5) {
+//         const computerChoice = computer(); // should return "rock", "paper", or "scissors"
+//         const humanChoice = human();       // same
+
+//         if (humanChoice === computerChoice) {
+//             console.log(`Round ${roundsCount + 1}: It's a tie! Both chose ${humanChoice}.`);
+//             // Still count ties as rounds if you want to avoid infinite loops
+//         } else if (
+//             (humanChoice === "rock" && computerChoice === "scissors") ||
+//             (humanChoice === "paper" && computerChoice === "rock") ||
+//             (humanChoice === "scissors" && computerChoice === "paper")
+//         ) {
+//             humanScore++;
+//             console.log(`Round ${roundsCount + 1}: You win! ${humanChoice} beats ${computerChoice}`);
+//         } else {
+//             computerScore++;
+//             console.log(`Round ${roundsCount + 1}: You lose! ${computerChoice} beats ${humanChoice}`);
+//         }
+
+//         roundsCount++;
+//     }
+
+//     // Final result
+//     if (humanScore > computerScore) {
+//         console.log(`You win the game! Score: ${humanScore} - ${computerScore}`);
+//     } else if (computerScore > humanScore) {
+//         console.log(`Computer wins the game! Score: ${computerScore} - ${humanScore}`);
+//     } else {
+//         console.log(`The game is a tie! Score: ${humanScore} - ${computerScore}`);
+//     }
+// }

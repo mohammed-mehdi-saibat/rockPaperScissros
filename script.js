@@ -1,44 +1,98 @@
 "use strict";
 
-function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
+// --------------------------------------------------COMPUTER-----------------------------------------
+function computer() {
+  let validChoices = ["rock", "paper", "scissors"];
+  let computerChoice = validChoices[Math.floor(Math.random() * 3)];
+  // SCREEN DISPLAY
+  const computerChoiceDisplay = document.querySelector(".computerChoice");
+  computerChoiceDisplay.textContent = `The computer chose: ${computerChoice}`;
+  return computerChoice;
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("Ready to play? Type rock, paper, or scissors!");
-  humanChoice = humanChoice.toLowerCase();
+const playButton = document.querySelector(".reload");
+playButton.addEventListener("click", () => {
+  location.reload();
+});
 
-  const validChoices = ["rock", "paper", "scissors"];
+// --------------------------------------------------COMPUTER-----------------------------------------
+//_+_+_+_+_+_+_+_+_+_+_+_+_+_+_++_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+// --------------------------------------------------HUMAN--------------------------------------------
 
-  if (validChoices.includes(humanChoice)) {
-    return humanChoice;
-  } else {
-    alert("Invalid choice! Please type rock, paper, or scissors.");
-    return getHumanChoice();
-  }
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
+const humanChoiceDisplay = document.querySelector(".humanChoice");
+
+let humanChoice = "";
+
+rock.addEventListener("click", () => {
+  humanChoice = "rock";
+  humanChoiceDisplay.textContent = `You chose: ${humanChoice}`;
+  playRound();
+});
+
+paper.addEventListener("click", () => {
+  humanChoice = "paper";
+  humanChoiceDisplay.textContent = `You chose: ${humanChoice}`;
+  playRound();
+});
+
+scissors.addEventListener("click", () => {
+  humanChoice = "scissors";
+  humanChoiceDisplay.textContent = `You chose: ${humanChoice}`;
+  playRound();
+});
+
+function human() {
+  return humanChoice;
 }
 
-function playRound(computerSelection, humanSelection) {
-  if (humanSelection === computerSelection) {
-    return "Draw! 🤝";
+// --------------------------------------------------HUMAN---------------------------------------------
+//_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_
+// --------------------------------------------------RESULTS-------------------------------------------
+
+const roundCount = document.querySelector(".roundCount");
+const computerScoreDisplay = document.querySelector(".computerScore");
+const humanScoreDisplay = document.querySelector(".humanScore");
+const result = document.querySelector(".result");
+
+let computerScore = 0;
+let humanScore = 0;
+let roundsCount = 0;
+
+function playRound() {
+  if (computerScore >= 5 || humanScore >= 5) return;
+
+  const computerChoice = computer();
+  const humanChoice = human();
+
+  if (humanChoice === computerChoice) {
+    result.textContent = `It's a tie! You both chose ${humanChoice}.`;
   } else if (
-    (humanSelection === "rock" && computerSelection === "scissors") ||
-    (humanSelection === "paper" && computerSelection === "rock") ||
-    (humanSelection === "scissors" && computerSelection === "paper")
+    (humanChoice === "rock" && computerChoice === "scissors") ||
+    (humanChoice === "paper" && computerChoice === "rock") ||
+    (humanChoice === "scissors" && computerChoice === "paper")
   ) {
-    return "You win! ✅";
+    humanScore++;
+    result.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
   } else {
-    return "Computer wins! ❌";
+    computerScore++;
+    result.textContent = `You lose! ${computerChoice} beats ${humanChoice}`;
+  }
+
+  roundsCount++;
+  roundCount.textContent = `Round: ${roundsCount}`;
+  humanScoreDisplay.textContent = `Human Score: ${humanScore}`;
+  computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+
+  if (computerScore === 5 || humanScore === 5) {
+    result.textContent +=
+      humanScore === 5 ? " 🎉 You won the game!" : " 😞 Computer won the game!";
   }
 }
 
-let computerSelection = getComputerChoice();
-let humanSelection = getHumanChoice();
+// --------------------------------------------------RESULTS-------------------------------------------
 
-console.log(`Computer chose: ${computerSelection}`);
-console.log(`You chose: ${humanSelection}`);
-console.log(playRound(computerSelection, humanSelection));
-
-// The game is done
+// Done

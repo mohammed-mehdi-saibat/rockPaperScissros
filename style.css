@@ -6,6 +6,7 @@
 body {
   font-family: "Press Start 2P", system-ui;
   background-color: #1d1127;
+  position: relative;
 }
 
 h1 {
@@ -13,10 +14,120 @@ h1 {
   margin: 20px 0 0 20px;
 }
 
-p {
-  margin-top: 16%;
-  margin-left: 40%;
+.choice {
+  padding: 14px 20px;
+  width: 400px;
+  font-family: "Press Start 2P", system-ui;
+  border: none;
+  background-color: #bdd909;
+  color: #1d1127;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.choice:hover {
+  transform: scale(1.02);
+}
+
+/* p {
+    margin-top: 16%;
+    margin-left: 40%;
+    color: #bdd909;
+    border-bottom: 2px solid #bdd909;
+    width: fit-content;
+  } */
+
+.reload {
+  transform: rotate(-90deg);
+  width: 500px;
+  margin-left: -200px;
+  margin-top: 250px;
+  padding: 20px 20px;
+  border: none;
+  background-color: #bdd909;
+  color: #1d1127;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Press Start 2P", system-ui;
+  cursor: pointer;
+}
+
+.separator {
+  width: 3px;
+  height: 500px;
+  background-color: #bdd909;
+  margin-left: 650px;
+  margin-top: -270px;
+}
+
+.computerChoice {
   color: #bdd909;
-  border-bottom: 2px solid #bdd909;
+  margin-left: 200px;
+  position: absolute;
+  font-size: 22px;
+  top: 100px;
+  width: 400px;
+  line-height: 1.4;
+  border-bottom: 3px solid #bdd909;
+  padding-bottom: 15px;
+}
+
+.humanChoiceButtons {
+  display: flex;
+  flex-direction: column;
+  margin-left: 800px;
+  margin-top: -500px;
+  gap: 15px;
+  border-bottom: 3px solid #bdd909;
+  padding-bottom: 20px;
   width: fit-content;
+}
+
+.humanChoiceButtons h4 {
+  color: #bdd909;
+  font-size: 22px;
+}
+
+.humanChoice {
+  position: absolute;
+  font-size: 22px;
+  bottom: -70px;
+  color: #bdd909;
+  width: 400px;
+  line-height: 1.4;
+  right: 150px;
+}
+
+.roundCount,
+.computerScore,
+.humanScore,
+.result {
+  position: absolute;
+  font-size: 20px;
+  color: #bdd909;
+  left: 200px;
+  width: 400px;
+}
+
+.roundCount {
+  top: 230px;
+}
+.computerScore {
+  top: 270px;
+}
+.humanScore {
+  top: 310px;
+  border-bottom: 3px solid #bdd909;
+  padding-bottom: 20px;
+}
+
+.result {
+  top: 370px;
+  border: 3px solid #bdd909;
+  padding: 10px 20px;
+  color: #1d1127;
+  background-color: #bdd909;
+  height: 200px;
+  display: flex;
+  align-items: center;
 }
