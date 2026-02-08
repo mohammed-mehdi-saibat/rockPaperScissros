@@ -1,3 +1,10 @@
+:root {
+    --neon-green: #bdd909;
+    --dark-purple: #1d1127;
+    --panel-bg: #2d1b3d;
+    --text-white: #ffffff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,154 +12,123 @@
 }
 
 body {
-    font-family: "Press Start 2P", cursive;
-    background-color: #0f0a1e;
-    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--dark-purple);
+    color: var(--text-white);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    overflow: hidden;
 }
 
 .game-container {
-    width: 100%;
-    max-width: 800px;
+    width: 90%;
+    max-width: 700px;
+}
+
+.glass-panel {
+    background: var(--panel-bg);
+    border: 4px solid var(--neon-green);
+    padding: 40px 20px;
     text-align: center;
-    background: #1d1127;
-    padding: 40px;
-    border: 4px solid #bdd909;
-    box-shadow: 10px 10px 0px #bdd909;
+    box-shadow: 12px 12px 0px rgba(189, 217, 9, 0.2);
 }
 
-header {
-    margin-bottom: 40px;
+.title {
+    font-size: 1.2rem;
+    color: var(--neon-green);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
 }
 
-h1 {
-    color: #bdd909;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.reload {
-    background: transparent;
-    border: 2px solid #bdd909;
-    color: #bdd909;
-    padding: 10px 20px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.reload:hover {
-    background: #bdd909;
-    color: #1d1127;
-}
-
-.scoreboard {
+.score-board {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    margin-bottom: 40px;
-    background: rgba(189, 217, 9, 0.1);
+    background: rgba(0,0,0,0.4);
     padding: 20px;
-    border-radius: 8px;
+    margin-bottom: 30px;
+    border-radius: 4px;
 }
 
-.score-card {
+.stat {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .label {
-    font-size: 12px;
+    font-size: 0.5rem;
     color: #888;
 }
 
-.humanScore, .computerScore {
-    font-size: 32px;
-    color: #bdd909;
+.value {
+    font-size: 1.5rem;
 }
 
-.round-info {
-    font-size: 14px;
-    border: 2px solid #bdd909;
-    padding: 10px;
+.highlight {
+    color: var(--neon-green);
 }
 
-.display-section {
-    margin-bottom: 40px;
-    min-height: 180px;
-}
-
-.choice-preview {
-    margin-bottom: 20px;
-}
-
-.choice-preview p {
-    font-size: 10px;
-    color: #888;
-    margin-bottom: 10px;
-}
-
-.computerChoice {
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.result-box {
-    background: #bdd909;
-    color: #1d1127;
-    padding: 20px;
-    min-height: 80px;
+.screen {
+    background: #000;
+    border: 2px solid #444;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1.6;
-    font-size: 14px;
+    margin-bottom: 30px;
+    padding: 10px;
 }
 
-.controls h3 {
-    font-size: 14px;
-    margin-bottom: 20px;
-    color: #888;
+.message {
+    font-size: 0.7rem;
+    line-height: 1.8;
+    color: var(--neon-green);
 }
 
-.button-group {
-    display: flex;
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
-.choice {
-    flex: 1;
-    min-width: 150px;
-    padding: 20px;
-    font-family: inherit;
+.choice-btn {
+    background: var(--neon-green);
+    color: var(--dark-purple);
     border: none;
-    background: #bdd909;
-    color: #1d1127;
+    padding: 20px 10px;
+    font-family: inherit;
+    font-size: 0.6rem;
     cursor: pointer;
-    transition: transform 0.1s, box-shadow 0.1s;
-    box-shadow: 0 6px 0 #8a9d07;
+    transition: transform 0.1s;
 }
 
-.choice:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 0 #8a9d07;
+.choice-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
 }
 
-.choice:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0 #8a9d07;
+.choice-btn:active {
+    transform: scale(0.95);
 }
 
-@media (max-width: 600px) {
-    .game-container { padding: 20px; }
-    h1 { font-size: 18px; }
-    .button-group { flex-direction: column; }
-    .choice { width: 100%; }
+.reset-link {
+    margin-top: 30px;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-family: inherit;
+    font-size: 0.5rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.reset-link:hover {
+    color: var(--neon-green);
+}
+
+@media (max-width: 500px) {
+    .controls { grid-template-columns: 1fr; }
+    .score-board { flex-direction: column; gap: 20px; }
 }
