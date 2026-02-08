@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- font -->
-    <title>Rock Paper Sc issors</title>
-  </head>
-  <body>
-    <h1>ROCK | PAPER | SCISSORS</h1>
-    <!-- <p>INSPECT TO PLAY!</p> -->
-    <button class="reload">🔄</button>
-    <h4 class="computerChoice">Computer Choice:</h4>
-    <h4 class="roundCount">Round: 0</h4>
-    <h4 class="computerScore">Computer Score:</h4>
-    <h4 class="humanScore">Human Score:</h4>
-    <h4 class="result">Result:</h4>
-    <div class="separator"></div>
-    <div class="humanChoiceButtons">
-      <h4>Choose:</h4>
-      <button class="rock choice">rock</button>
-      <button class="paper choice">paper</button>
-      <button class="scissors choice">scissors</button>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>ROCK PAPER SCISSORS</h1>
+            <button class="reload">RESET GAME</button>
+        </header>
+
+        <div class="scoreboard">
+            <div class="score-card">
+                <span class="label">HUMAN</span>
+                <span class="humanScore">0</span>
+            </div>
+            <div class="round-info">
+                <span class="roundCount">ROUND 0</span>
+            </div>
+            <div class="score-card">
+                <span class="label">CPU</span>
+                <span class="computerScore">0</span>
+            </div>
+        </div>
+
+        <main class="game-area">
+            <div class="display-section">
+                <div class="choice-preview">
+                    <p>Computer chose:</p>
+                    <h2 class="computerChoice">-</h2>
+                </div>
+                <div class="result-box">
+                    <p class="result">Waiting for your move...</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <h3>Make your move:</h3>
+                <div class="button-group">
+                    <button class="choice rock">ROCK</button>
+                    <button class="choice paper">PAPER</button>
+                    <button class="choice scissors">SCISSORS</button>
+                </div>
+            </div>
+        </main>
     </div>
-    <h4 class="humanChoice"></h4>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
