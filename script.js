@@ -1,78 +1,68 @@
 "use strict";
 
-const computerChoiceDisplay = document.querySelector(".computerChoice");
-const roundCountDisplay = document.querySelector(".roundCount");
-const computerScoreDisplay = document.querySelector(".computerScore");
-const humanScoreDisplay = document.querySelector(".humanScore");
-const resultDisplay = document.querySelector(".result");
-const reloadBtn = document.querySelector(".reload");
-const choiceButtons = document.querySelectorAll(".choice");
+const humanScoreEl = document.getElementById('humanScore');
+const computerScoreEl = document.getElementById('computerScore');
+const roundCountEl = document.getElementById('roundCount');
+const statusText = document.getElementById('statusText');
+const resetBtn = document.getElementById('resetBtn');
+const choiceButtons = document.querySelectorAll('.choice-btn');
 
-let computerScore = 0;
 let humanScore = 0;
-let roundsCount = 0;
+let computerScore = 0;
+let rounds = 0;
 
 function getComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
-    const randomChoice = choices[Math.floor(Math.random() * 3)];
-    computerChoiceDisplay.textContent = randomChoice.toUpperCase();
-    return randomChoice;
+    const choices = ['rock', 'paper', 'scissors'];
+    return choices[Math.floor(Math.random() * 3)];
 }
 
-function playRound(humanChoice) {
-    if (computerScore >= 5 || humanScore >= 5) return;
+function playRound(playerChoice) {
+    if (humanScore === 5 || computerScore === 5) return;
 
-    const computerChoice = getComputerChoice();
-    roundsCount++;
-    
-    let roundResult = "";
+    const cpuChoice = getComputerChoice();
+    rounds++;
+    let resultMsg = "";
 
-    if (humanChoice === computerChoice) {
-        roundResult = `TIE! BOTH CHOSE ${humanChoice.toUpperCase()}.`;
+    if (playerChoice === cpuChoice) {
+        resultMsg = `TIE! BOTH CHOSE ${playerChoice.toUpperCase()}`;
     } else if (
-        (humanChoice === "rock" && computerChoice === "scissors") ||
-        (humanChoice === "paper" && computerChoice === "rock") ||
-        (humanChoice === "scissors" && computerChoice === "paper")
+        (playerChoice === 'rock' && cpuChoice === 'scissors') ||
+        (playerChoice === 'paper' && cpuChoice === 'rock') ||
+        (playerChoice === 'scissors' && cpuChoice === 'paper')
     ) {
         humanScore++;
-        roundResult = `POINT FOR YOU! ${humanChoice.toUpperCase()} BEATS ${computerChoice.toUpperCase()}.`;
+        resultMsg = `POINT FOR YOU! ${playerChoice.toUpperCase()} BEATS ${cpuChoice.toUpperCase()}`;
     } else {
         computerScore++;
-        roundResult = `CPU SCORES! ${computerChoice.toUpperCase()} BEATS ${humanChoice.toUpperCase()}.`;
+        resultMsg = `CPU SCORES! ${cpuChoice.toUpperCase()} BEATS ${playerChoice.toUpperCase()}`;
     }
 
-    updateUI(roundResult);
+    updateDisplay(resultMsg);
     checkWinner();
 }
 
-function updateUI(message) {
-    roundCountDisplay.textContent = `ROUND ${roundsCount}`;
-    humanScoreDisplay.textContent = humanScore;
-    computerScoreDisplay.textContent = computerScore;
-    resultDisplay.textContent = message;
+function updateDisplay(msg) {
+    humanScoreEl.textContent = humanScore;
+    computerScoreEl.textContent = computerScore;
+    roundCountEl.textContent = rounds;
+    statusText.textContent = msg;
 }
 
 function checkWinner() {
     if (humanScore === 5 || computerScore === 5) {
-        const finalMessage = humanScore === 5 ? "GAME OVER: YOU WIN! 🏆" : "GAME OVER: CPU WINS! 🤖";
-        resultDisplay.textContent = finalMessage;
-        resultDisplay.style.background = "#fff";
-        resultDisplay.style.color = "#1d1127";
-        choiceButtons.forEach(btn => {
-            btn.style.opacity = "0.5";
-            btn.style.cursor = "not-allowed";
-        });
+        const finalMsg = humanScore === 5 ? "YOU WON THE TOURNAMENT! 🎉" : "SYSTEM FAILURE: CPU WINS! 💀";
+        statusText.innerHTML = `<span style="color:white">${finalMsg}</span>`;
+        choiceButtons.forEach(btn => btn.style.display = 'none');
     }
 }
 
 choiceButtons.forEach(button => {
-    button.addEventListener("click", function() {
-        // This looks at the text inside the button to decide the move
-        const userMove = this.textContent.toLowerCase().trim();
-        playRound(userMove);
+    button.addEventListener('click', () => {
+        const choice = button.getAttribute('data-choice');
+        playRound(choice);
     });
 });
 
-reloadBtn.addEventListener("click", () => {
+resetBtn.addEventListener('click', () => {
     window.location.reload();
 });
