@@ -15,7 +15,7 @@ let roundsCount = 0;
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomChoice = choices[Math.floor(Math.random() * 3)];
-    computerChoiceDisplay.textContent = randomChoice;
+    computerChoiceDisplay.textContent = randomChoice.toUpperCase();
     return randomChoice;
 }
 
@@ -57,18 +57,22 @@ function checkWinner() {
         const finalMessage = humanScore === 5 ? "GAME OVER: YOU WIN! 🏆" : "GAME OVER: CPU WINS! 🤖";
         resultDisplay.textContent = finalMessage;
         resultDisplay.style.background = "#fff";
-        choiceButtons.forEach(btn => btn.style.opacity = "0.5");
+        resultDisplay.style.color = "#1d1127";
+        choiceButtons.forEach(btn => {
+            btn.style.opacity = "0.5";
+            btn.style.cursor = "not-allowed";
+        });
     }
 }
 
 choiceButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-        const userMove = e.target.classList.contains("rock") ? "rock" : 
-                         e.target.classList.contains("paper") ? "paper" : "scissors";
+    button.addEventListener("click", function() {
+        // This looks at the text inside the button to decide the move
+        const userMove = this.textContent.toLowerCase().trim();
         playRound(userMove);
     });
 });
 
 reloadBtn.addEventListener("click", () => {
-    location.reload();
+    window.location.reload();
 });
