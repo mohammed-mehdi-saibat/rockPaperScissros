@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro RPS Arcade</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="game-container">
-        <header>
-            <h1>ROCK PAPER SCISSORS</h1>
-            <button class="reload">RESET GAME</button>
-        </header>
-
-        <div class="scoreboard">
-            <div class="score-card">
-                <span class="label">HUMAN</span>
-                <span class="humanScore">0</span>
-            </div>
-            <div class="round-info">
-                <span class="roundCount">ROUND 0</span>
-            </div>
-            <div class="score-card">
-                <span class="label">CPU</span>
-                <span class="computerScore">0</span>
-            </div>
-        </div>
-
-        <main class="game-area">
-            <div class="display-section">
-                <div class="choice-preview">
-                    <p>Computer chose:</p>
-                    <h2 class="computerChoice">-</h2>
+        <div class="glass-panel">
+            <h1 class="title">ROCK PAPER SCISSORS</h1>
+            
+            <div class="score-board">
+                <div class="stat">
+                    <span class="label">HUMAN</span>
+                    <span id="humanScore" class="value">0</span>
                 </div>
-                <div class="result-box">
-                    <p class="result">Waiting for your move...</p>
+                <div class="stat">
+                    <span class="label">ROUND</span>
+                    <span id="roundCount" class="value highlight">0</span>
                 </div>
+                <div class="stat">
+                    <span class="label">CPU</span>
+                    <span id="computerScore" class="value">0</span>
+                </div>
+            </div>
+
+            <div class="screen">
+                <div id="statusText" class="message">READY TO PLAY?</div>
             </div>
 
             <div class="controls">
-                <h3>Make your move:</h3>
-                <div class="button-group">
-                    <button class="choice rock">ROCK</button>
-                    <button class="choice paper">PAPER</button>
-                    <button class="choice scissors">SCISSORS</button>
-                </div>
+                <button class="choice-btn" data-choice="rock">ROCK</button>
+                <button class="choice-btn" data-choice="paper">PAPER</button>
+                <button class="choice-btn" data-choice="scissors">SCISSORS</button>
             </div>
-        </main>
+
+            <button id="resetBtn" class="reset-link">RESTART SYSTEM</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
